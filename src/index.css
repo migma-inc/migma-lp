@@ -119,7 +119,7 @@
   }
 
   .btn-primary {
-    @apply bg-migmaBlue text-white hover:bg-blue-600;
+    @apply bg-black text-white hover:bg-black/90;
   }
 
   .btn-text {
@@ -133,11 +133,11 @@
 
   /* Títulos de Seção */
   .section-title {
-    @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-migmaBlue text-transparent bg-clip-text;
+    @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text;
   }
 
   .section-description {
-    @apply text-center text-[22px] leading-[30px] tracking-tight text-graphiteGray;
+    @apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E];
   }
 
   .section-heading {
@@ -155,10 +155,10 @@
   }
 
   .gradient-section {
-    @apply bg-white;
+    @apply bg-gradient-to-b from-white to-[#D2DCFF];
   }
 
   .gradient-text {
-    @apply bg-gradient-to-b from-black to-migmaBlue text-transparent bg-clip-text;
+    @apply bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text;
   }
 }

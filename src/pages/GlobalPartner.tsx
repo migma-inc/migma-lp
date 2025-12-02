@@ -125,10 +125,10 @@ export const GlobalPartner = () => {
                                 <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight">
                                     Global Partner Program
                                 </div>
-                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-migmaBlue text-transparent bg-clip-text mt-6">
+                                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6">
                                     Work with MIGMA from anywhere in the world
                                 </h1>
-                                <p className="text-xl text-graphiteGray tracking-tight mt-6">
+                                <p className="text-xl text-[#010D3E] tracking-tight mt-6">
                                     Join the MIGMA Global Partner Program and collaborate with us as a Global Independent Contractor Partner.
                                 </p>
                                 <div className="flex gap-1 items-center mt-[30px]">
@@ -167,287 +167,396 @@ export const GlobalPartner = () => {
                                     src="/noodle.png"
                                     width={220}
                                     alt="Noodle image"
-                                    className="hidden lg:block top-[524px] left-[448px] absolute rotate-[30deg]"
+                                    className="hidden lg:block top-[420px] left-[448px] absolute rotate-[30deg]"
                                     style={{
                                         rotate: 30,
                                         translateY: translateY,
                                     }}
                                 />
                             </div>
-                            <h2 className="section-title">How it works</h2>
-                            <p className="section-description mt-5">Join our global team in four simple steps</p>
                         </div>
-                        <div className="relative border-l-2 border-muted ml-4 md:ml-0 md:pl-8 space-y-12">
-                            {[
-                                { title: 'Apply', desc: 'Submit your application with your professional details.' },
-                                { title: 'Profile Review', desc: 'Our team reviews your experience and qualifications.' },
-                                { title: 'Interview', desc: 'A brief call to discuss your fit and opportunities.' },
-                                { title: 'Onboarding', desc: 'Get set up with our systems and start working.' },
-                            ].map((step, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="relative pl-8 md:pl-0"
-                                >
-                                    <div className="absolute -left-[9px] md:-left-[33px] top-1 bg-primary w-4 h-4 rounded-full border-4 border-background shadow-sm" />
-                                    <h3 className="text-xl font-bold">{step.title}</h3>
-                                    <p className="text-muted-foreground">{step.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section >
-
-                {/* Section D: Application Form */}
-                < section id="application-form" className="gradient-section py-24" >
-                    <div className="container max-w-3xl">
-                        <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-sm">
-                            <CardContent className="p-8 sm:p-12">
-                                <ApplicationWizard />
-                            </CardContent>
-                        </Card>
                     </div>
                 </section >
             </div >
-            );
+
+            {/* Section B: Benefits Grid */}
+            < section id="benefits" className="gradient-section py-24 overflow-x-clip relative" >
+                <div className="container">
+                    {/* Heading centralizado inspirado no template */}
+                    <div className="section-heading mb-16">
+                        <div className="flex justify-center">
+                            <div className="tag">Why join MIGMA</div>
+                        </div>
+                        <h2 className="section-title mt-5">
+                            Work with freedom and earn in USD
+                        </h2>
+                        <p className="section-description mt-5">
+                            Join a global team of talented professionals and enjoy the benefits of working remotely with competitive compensation.
+                        </p>
+                    </div>
+
+                    {/* Elementos 3D decorativos com parallax */}
+                    <motion.img
+                        src="/pyramid.png"
+                        alt="Pyramid"
+                        width={200}
+                        height={200}
+                        className="hidden md:block absolute -right-16 top-0"
+                        style={{
+                            translateY: translateY,
+                        }}
+                    />
+                    <motion.img
+                        src="/tube.png"
+                        alt="Tube"
+                        width={200}
+                        height={200}
+                        className="hidden md:block absolute bottom-0 -left-16"
+                        style={{
+                            translateY: translateY,
+                        }}
+                    />
+
+                    {/* Grid de benefícios */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                        {/* Card 1: Earn in USD */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="group"
+                        >
+                            <div className="relative h-full bg-white rounded-2xl p-8 shadow-[0_7px_14px_#EAEAEA] hover:shadow-[0_14px_28px_rgba(0,0,0,0.1)] transition-all duration-300 border border-[#F1F1F1]">
+                                <div className="w-16 h-16 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <img src="/money-icon.svg" alt="Money" className="w-full h-full" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4 text-gray-900">Earn in USD</h3>
+                                <p className="text-gray-600 leading-relaxed">
+                                    Competitive compensation paid in US Dollars, regardless of your location.
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        {/* Card 2: Work Remotely */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="group"
+                        >
+                            <div className="relative h-full bg-white rounded-2xl p-8 shadow-[0_7px_14px_#EAEAEA] hover:shadow-[0_14px_28px_rgba(0,0,0,0.1)] transition-all duration-300 border border-[#F1F1F1]">
+                                <div className="w-16 h-16 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <img src="/remote-work-icon.svg" alt="Remote Work" className="w-full h-full" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4 text-gray-900">Work Remotely</h3>
+                                <p className="text-gray-600 leading-relaxed">
+                                    Complete freedom to work from anywhere. All you need is a reliable internet connection.
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        {/* Card 3: Business Registration */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="group"
+                        >
+                            <div className="relative h-full bg-white rounded-2xl p-8 shadow-[0_7px_14px_#EAEAEA] hover:shadow-[0_14px_28px_rgba(0,0,0,0.1)] transition-all duration-300 border border-[#F1F1F1]">
+                                <div className="w-16 h-16 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <img src="/business-icon.svg" alt="Business" className="w-full h-full" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4 text-gray-900">Business Entity Required</h3>
+                                <p className="text-gray-600 leading-relaxed">
+                                    You must have a valid business entity (CNPJ, NIF, or equivalent) to invoice us.
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section >
+
+            {/* Section C: Timeline */}
+            < section id="how-it-works" className="bg-white py-24" >
+                <div className="container max-w-3xl">
+                    <div className="section-heading mb-16">
+                        <h2 className="section-title">How it works</h2>
+                        <p className="section-description mt-5">Join our global team in four simple steps</p>
+                    </div>
+                    <div className="relative border-l-2 border-muted ml-4 md:ml-0 md:pl-8 space-y-12">
+                        {[
+                            { title: 'Apply', desc: 'Submit your application with your professional details.' },
+                            { title: 'Profile Review', desc: 'Our team reviews your experience and qualifications.' },
+                            { title: 'Interview', desc: 'A brief call to discuss your fit and opportunities.' },
+                            { title: 'Onboarding', desc: 'Get set up with our systems and start working.' },
+                        ].map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="relative pl-8 md:pl-0"
+                            >
+                                <div className="absolute -left-[9px] md:-left-[33px] top-1 bg-primary w-4 h-4 rounded-full border-4 border-background shadow-sm" />
+                                <h3 className="text-xl font-bold">{step.title}</h3>
+                                <p className="text-muted-foreground">{step.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section >
+
+            {/* Section D: Application Form */}
+            < section id="application-form" className="gradient-section py-24" >
+                <div className="container max-w-3xl">
+                    <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-sm">
+                        <CardContent className="p-8 sm:p-12">
+                            <ApplicationWizard />
+                        </CardContent>
+                    </Card>
+                </div>
+            </section >
+        </div >
+    );
 };
 
 const ApplicationWizard = () => {
     const [step, setStep] = React.useState(1);
-            const totalSteps = 5;
+    const totalSteps = 5;
 
-            // We use a single form for all steps, but validate per step
-            const form = useForm<FormData>({
-                resolver: zodResolver(formSchema) as any,
-                mode: 'onChange',
-                defaultValues: {
-                    expertise: [],
+    // We use a single form for all steps, but validate per step
+    const form = useForm<FormData>({
+        resolver: zodResolver(formSchema) as any,
+        mode: 'onChange',
+        defaultValues: {
+            expertise: [],
         }
     });
 
-                const {register, trigger, formState: {errors}, setValue, watch } = form;
-                const expertise = watch('expertise');
+    const { register, trigger, formState: { errors }, setValue, watch } = form;
+    const expertise = watch('expertise');
 
     const validateStep = async (currentStep: number) => {
-                    let fieldsToValidate: (keyof FormData)[] = [];
-                switch (currentStep) {
+        let fieldsToValidate: (keyof FormData)[] = [];
+        switch (currentStep) {
             case 1: fieldsToValidate = ['fullName', 'email', 'phone', 'country']; break;
-                case 2: fieldsToValidate = ['hasBusiness', 'businessId']; break;
-                case 3: fieldsToValidate = ['yearsExperience', 'englishLevel', 'expertise']; break;
-                case 4: fieldsToValidate = ['availability', 'whyMigma', 'isContractor']; break;
-                case 5: fieldsToValidate = ['linkedin']; break;
+            case 2: fieldsToValidate = ['hasBusiness', 'businessId']; break;
+            case 3: fieldsToValidate = ['yearsExperience', 'englishLevel', 'expertise']; break;
+            case 4: fieldsToValidate = ['availability', 'whyMigma', 'isContractor']; break;
+            case 5: fieldsToValidate = ['linkedin']; break;
         }
-                const result = await trigger(fieldsToValidate);
-                return result;
+        const result = await trigger(fieldsToValidate);
+        return result;
     };
 
     const handleNext = async () => {
         const isStepValid = await validateStep(step);
-                if (isStepValid) {
-                    setStep((s) => Math.min(s + 1, totalSteps));
+        if (isStepValid) {
+            setStep((s) => Math.min(s + 1, totalSteps));
         }
     };
 
     const handlePrev = () => setStep((s) => Math.max(s - 1, 1));
 
-                const progress = (step / totalSteps) * 100;
+    const progress = (step / totalSteps) * 100;
 
     const onSubmit = (data: FormData) => {
-                    console.log("Form Submitted:", data);
-                alert("Application Submitted! (Check console for data)");
+        console.log("Form Submitted:", data);
+        alert("Application Submitted! (Check console for data)");
     };
 
-                return (
-                <div>
-                    <div className="mb-8">
-                        <div className="flex justify-between text-sm font-medium text-muted-foreground mb-2">
-                            <span>Step {step} of {totalSteps}</span>
-                            <span>{Math.round(progress)}%</span>
+    return (
+        <div>
+            <div className="mb-8">
+                <div className="flex justify-between text-sm font-medium text-muted-foreground mb-2">
+                    <span>Step {step} of {totalSteps}</span>
+                    <span>{Math.round(progress)}%</span>
+                </div>
+                <Progress value={progress} className="h-2" />
+            </div>
+
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {step === 1 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+                        <h3 className="text-2xl font-bold mb-4">Personal Details</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="fullName">Full Name</Label>
+                                <Input id="fullName" placeholder="John Doe" {...register('fullName')} />
+                                {errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="email" type="email" placeholder="john@example.com" {...register('email')} />
+                                {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="phone">Phone</Label>
+                                <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" {...register('phone')} />
+                                {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="country">Country</Label>
+                                <Input id="country" placeholder="Select Country" {...register('country')} />
+                                {errors.country && <p className="text-sm text-destructive">{errors.country.message}</p>}
+                            </div>
                         </div>
-                        <Progress value={progress} className="h-2" />
-                    </div>
+                    </motion.div>
+                )}
 
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        {step === 1 && (
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-                                <h3 className="text-2xl font-bold mb-4">Personal Details</h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="fullName">Full Name</Label>
-                                        <Input id="fullName" placeholder="John Doe" {...register('fullName')} />
-                                        {errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="email">Email</Label>
-                                        <Input id="email" type="email" placeholder="john@example.com" {...register('email')} />
-                                        {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="phone">Phone</Label>
-                                        <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" {...register('phone')} />
-                                        {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="country">Country</Label>
-                                        <Input id="country" placeholder="Select Country" {...register('country')} />
-                                        {errors.country && <p className="text-sm text-destructive">{errors.country.message}</p>}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
+                {step === 2 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+                        <h3 className="text-2xl font-bold mb-4">Legal Information</h3>
+                        <div className="space-y-4">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox
+                                    id="hasBusiness"
+                                    onCheckedChange={(checked) => setValue('hasBusiness', checked as boolean)}
+                                    {...register('hasBusiness')}
+                                />
+                                <Label htmlFor="hasBusiness" className="font-normal">I have a valid business registration (CNPJ/NIF/LLC)</Label>
+                            </div>
+                            {errors.hasBusiness && <p className="text-sm text-destructive">{errors.hasBusiness.message}</p>}
 
-                        {step === 2 && (
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-                                <h3 className="text-2xl font-bold mb-4">Legal Information</h3>
-                                <div className="space-y-4">
-                                    <div className="flex items-center space-x-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="businessId">Business Registration Number (CNPJ/NIF)</Label>
+                                <Input id="businessId" placeholder="00.000.000/0001-00" {...register('businessId')} />
+                                {errors.businessId && <p className="text-sm text-destructive">{errors.businessId.message}</p>}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+
+                {step === 3 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+                        <h3 className="text-2xl font-bold mb-4">Experience</h3>
+                        <div className="space-y-2">
+                            <Label htmlFor="yearsExperience">Years of Experience</Label>
+                            <Input id="yearsExperience" type="number" placeholder="e.g. 5" {...register('yearsExperience')} />
+                            {errors.yearsExperience && <p className="text-sm text-destructive">{errors.yearsExperience.message}</p>}
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>English Level</Label>
+                            <Select onValueChange={(val) => setValue('englishLevel', val)}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select level" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Basic">Basic</SelectItem>
+                                    <SelectItem value="Intermediate">Intermediate</SelectItem>
+                                    <SelectItem value="Advanced">Advanced</SelectItem>
+                                    <SelectItem value="Fluent">Fluent/Native</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {errors.englishLevel && <p className="text-sm text-destructive">{errors.englishLevel.message}</p>}
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Expertise</Label>
+                            <div className="grid grid-cols-2 gap-2">
+                                {['Frontend', 'Backend', 'Fullstack', 'Mobile', 'DevOps', 'Design'].map((skill) => (
+                                    <div key={skill} className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/50 transition">
                                         <Checkbox
-                                            id="hasBusiness"
-                                            onCheckedChange={(checked) => setValue('hasBusiness', checked as boolean)}
-                                            {...register('hasBusiness')}
+                                            id={`skill-${skill}`}
+                                            checked={expertise?.includes(skill)}
+                                            onCheckedChange={(checked) => {
+                                                const current = expertise || [];
+                                                const updated = checked
+                                                    ? [...current, skill]
+                                                    : current.filter((s) => s !== skill);
+                                                setValue('expertise', updated);
+                                            }}
                                         />
-                                        <Label htmlFor="hasBusiness" className="font-normal">I have a valid business registration (CNPJ/NIF/LLC)</Label>
+                                        <Label htmlFor={`skill-${skill}`} className="cursor-pointer flex-1">{skill}</Label>
                                     </div>
-                                    {errors.hasBusiness && <p className="text-sm text-destructive">{errors.hasBusiness.message}</p>}
-
-                                    <div className="space-y-2">
-                                        <Label htmlFor="businessId">Business Registration Number (CNPJ/NIF)</Label>
-                                        <Input id="businessId" placeholder="00.000.000/0001-00" {...register('businessId')} />
-                                        {errors.businessId && <p className="text-sm text-destructive">{errors.businessId.message}</p>}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-
-                        {step === 3 && (
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-                                <h3 className="text-2xl font-bold mb-4">Experience</h3>
-                                <div className="space-y-2">
-                                    <Label htmlFor="yearsExperience">Years of Experience</Label>
-                                    <Input id="yearsExperience" type="number" placeholder="e.g. 5" {...register('yearsExperience')} />
-                                    {errors.yearsExperience && <p className="text-sm text-destructive">{errors.yearsExperience.message}</p>}
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label>English Level</Label>
-                                    <Select onValueChange={(val) => setValue('englishLevel', val)}>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select level" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="Basic">Basic</SelectItem>
-                                            <SelectItem value="Intermediate">Intermediate</SelectItem>
-                                            <SelectItem value="Advanced">Advanced</SelectItem>
-                                            <SelectItem value="Fluent">Fluent/Native</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                    {errors.englishLevel && <p className="text-sm text-destructive">{errors.englishLevel.message}</p>}
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label>Expertise</Label>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        {['Frontend', 'Backend', 'Fullstack', 'Mobile', 'DevOps', 'Design'].map((skill) => (
-                                            <div key={skill} className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/50 transition">
-                                                <Checkbox
-                                                    id={`skill-${skill}`}
-                                                    checked={expertise?.includes(skill)}
-                                                    onCheckedChange={(checked) => {
-                                                        const current = expertise || [];
-                                                        const updated = checked
-                                                            ? [...current, skill]
-                                                            : current.filter((s) => s !== skill);
-                                                        setValue('expertise', updated);
-                                                    }}
-                                                />
-                                                <Label htmlFor={`skill-${skill}`} className="cursor-pointer flex-1">{skill}</Label>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    {errors.expertise && <p className="text-sm text-destructive">{errors.expertise.message}</p>}
-                                </div>
-                            </motion.div>
-                        )}
-
-                        {step === 4 && (
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-                                <h3 className="text-2xl font-bold mb-4">Fit & Availability</h3>
-                                <div className="space-y-2">
-                                    <Label>Availability</Label>
-                                    <Select onValueChange={(val) => setValue('availability', val)}>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select availability" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="Full-time">Full-time (40h/week)</SelectItem>
-                                            <SelectItem value="Part-time">Part-time (20h/week)</SelectItem>
-                                            <SelectItem value="Hourly">Hourly</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                    {errors.availability && <p className="text-sm text-destructive">{errors.availability.message}</p>}
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label htmlFor="whyMigma">Why MIGMA?</Label>
-                                    <Textarea id="whyMigma" placeholder="Tell us why you want to join..." className="min-h-[120px]" {...register('whyMigma')} />
-                                    {errors.whyMigma && <p className="text-sm text-destructive">{errors.whyMigma.message}</p>}
-                                </div>
-
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox
-                                        id="isContractor"
-                                        onCheckedChange={(checked) => setValue('isContractor', checked as boolean)}
-                                        {...register('isContractor')}
-                                    />
-                                    <Label htmlFor="isContractor" className="font-normal">I understand this is a contractor position.</Label>
-                                </div>
-                                {errors.isContractor && <p className="text-sm text-destructive">{errors.isContractor.message}</p>}
-                            </motion.div>
-                        )}
-
-                        {step === 5 && (
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-                                <h3 className="text-2xl font-bold mb-4">Finalize Application</h3>
-                                <div className="space-y-2">
-                                    <Label htmlFor="linkedin">LinkedIn Profile URL</Label>
-                                    <Input id="linkedin" placeholder="https://linkedin.com/in/..." {...register('linkedin')} />
-                                    {errors.linkedin && <p className="text-sm text-destructive">{errors.linkedin.message}</p>}
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label>Upload CV (PDF)</Label>
-                                    <div className="border-2 border-dashed border-input rounded-md p-8 text-center hover:bg-muted/50 transition cursor-pointer flex flex-col items-center justify-center gap-2">
-                                        <Upload className="h-8 w-8 text-muted-foreground" />
-                                        <p className="text-muted-foreground">Click to upload or drag and drop</p>
-                                        <p className="text-xs text-muted-foreground/70">PDF only, max 5MB</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-
-                        <div className="flex justify-between pt-6 border-t mt-8">
-                            {step > 1 ? (
-                                <Button type="button" variant="outline" onClick={handlePrev}>
-                                    <ChevronLeft className="w-4 h-4 mr-2" /> Back
-                                </Button>
-                            ) : (
-                                <div />
-                            )}
-
-                            {step < totalSteps ? (
-                                <Button type="button" onClick={handleNext}>
-                                    Next Step <ChevronRight className="w-4 h-4 ml-2" />
-                                </Button>
-                            ) : (
-                                <Button type="submit">
-                                    Submit Application <Check className="w-4 h-4 ml-2" />
-                                </Button>
-                            )}
+                                ))}
+                            </div>
+                            {errors.expertise && <p className="text-sm text-destructive">{errors.expertise.message}</p>}
                         </div>
-                    </form>
-                </div >
-                );
+                    </motion.div>
+                )}
+
+                {step === 4 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+                        <h3 className="text-2xl font-bold mb-4">Fit & Availability</h3>
+                        <div className="space-y-2">
+                            <Label>Availability</Label>
+                            <Select onValueChange={(val) => setValue('availability', val)}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select availability" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Full-time">Full-time (40h/week)</SelectItem>
+                                    <SelectItem value="Part-time">Part-time (20h/week)</SelectItem>
+                                    <SelectItem value="Hourly">Hourly</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {errors.availability && <p className="text-sm text-destructive">{errors.availability.message}</p>}
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="whyMigma">Why MIGMA?</Label>
+                            <Textarea id="whyMigma" placeholder="Tell us why you want to join..." className="min-h-[120px]" {...register('whyMigma')} />
+                            {errors.whyMigma && <p className="text-sm text-destructive">{errors.whyMigma.message}</p>}
+                        </div>
+
+                        <div className="flex items-center space-x-2">
+                            <Checkbox
+                                id="isContractor"
+                                onCheckedChange={(checked) => setValue('isContractor', checked as boolean)}
+                                {...register('isContractor')}
+                            />
+                            <Label htmlFor="isContractor" className="font-normal">I understand this is a contractor position.</Label>
+                        </div>
+                        {errors.isContractor && <p className="text-sm text-destructive">{errors.isContractor.message}</p>}
+                    </motion.div>
+                )}
+
+                {step === 5 && (
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+                        <h3 className="text-2xl font-bold mb-4">Finalize Application</h3>
+                        <div className="space-y-2">
+                            <Label htmlFor="linkedin">LinkedIn Profile URL</Label>
+                            <Input id="linkedin" placeholder="https://linkedin.com/in/..." {...register('linkedin')} />
+                            {errors.linkedin && <p className="text-sm text-destructive">{errors.linkedin.message}</p>}
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Upload CV (PDF)</Label>
+                            <div className="border-2 border-dashed border-input rounded-md p-8 text-center hover:bg-muted/50 transition cursor-pointer flex flex-col items-center justify-center gap-2">
+                                <Upload className="h-8 w-8 text-muted-foreground" />
+                                <p className="text-muted-foreground">Click to upload or drag and drop</p>
+                                <p className="text-xs text-muted-foreground/70">PDF only, max 5MB</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+
+                <div className="flex justify-between pt-6 border-t mt-8">
+                    {step > 1 ? (
+                        <Button type="button" variant="outline" onClick={handlePrev}>
+                            <ChevronLeft className="w-4 h-4 mr-2" /> Back
+                        </Button>
+                    ) : (
+                        <div />
+                    )}
+
+                    {step < totalSteps ? (
+                        <Button type="button" onClick={handleNext}>
+                            Next Step <ChevronRight className="w-4 h-4 ml-2" />
+                        </Button>
+                    ) : (
+                        <Button type="submit">
+                            Submit Application <Check className="w-4 h-4 ml-2" />
+                        </Button>
+                    )}
+                </div>
+            </form>
+        </div >
+    );
 };
