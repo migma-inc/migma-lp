@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -52,13 +52,23 @@ type FormData = z.infer<typeof formSchema>;
 
 export const GlobalPartner = () => {
     const heroRef = useRef(null);
+    const [isScrolled, setIsScrolled] = useState(false);
     const { scrollYProgress } = useScroll({
         target: heroRef,
         offset: ["start end", "end start"],
     });
 
-
     const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            setIsScrolled(scrollPosition > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const scrollToForm = () => {
         const element = document.getElementById('application-form');
@@ -70,9 +80,9 @@ export const GlobalPartner = () => {
             {/* Wrapper com gradiente azul para Header + Hero */}
             <div style={{ background: "radial-gradient(ellipse 200% 100% at bottom left, #183EC2, #EAEEFE 100%)" }} className="pt-[100px]">
                 {/* Header - Replicado do Template */}
-                <header className="fixed top-0 left-0 right-0 backdrop-blur-sm z-50">
-                    <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
-                        <p className="text-white/60 hidden md:block">Join our global team and work from anywhere</p>
+                <header className={`fixed top-0 left-0 right-0 backdrop-blur-sm z-50 transition-colors duration-300 ${isScrolled ? 'bg-white' : 'bg-transparent'}`}>
+                    <div className={`flex justify-center items-center py-3 text-sm gap-3 transition-colors duration-300 ${isScrolled ? 'bg-white text-black' : 'bg-black text-white'}`}>
+                        <p className={`hidden md:block transition-colors duration-300 ${isScrolled ? 'text-black/60' : 'text-white/60'}`}>Join our global team and work from anywhere</p>
                         <div className="inline-flex gap-1 items-center cursor-pointer" onClick={scrollToForm}>
                             <p>Apply now</p>
                             <svg className="h-4 w-4 inline-flex justify-center items-center" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +91,7 @@ export const GlobalPartner = () => {
                         </div>
                     </div>
 
-                    <div className="py-3">
+                    <div className={`py-3 transition-colors duration-300 ${isScrolled ? 'bg-white' : 'bg-transparent'}`}>
                         <div className="container">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
@@ -91,10 +101,10 @@ export const GlobalPartner = () => {
                                         className="h-16 md:h-20 w-auto"
                                     />
                                 </div>
-                                <svg className="h-5 w-5 md:hidden" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className={`h-5 w-5 md:hidden transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                                <nav className="hidden md:flex gap-6 text-black/60 items-center">
+                                <nav className={`hidden md:flex gap-6 items-center transition-colors duration-300 ${isScrolled ? 'text-black/60' : 'text-black/60'}`}>
                                     <a href="#benefits" className="hover:text-black transition">Benefits</a>
                                     <a href="#how-it-works" className="hover:text-black transition">How it works</a>
                                     <a href="#application-form" className="hover:text-black transition">Apply</a>
