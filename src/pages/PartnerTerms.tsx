@@ -11,10 +11,23 @@ export const PartnerTerms = () => {
     const navigate = useNavigate();
     const [accepted, setAccepted] = React.useState(false);
 
-    const handleAccept = () => {
+    const handleAccept = async () => {
         if (accepted) {
-            alert("Terms accepted! Redirecting...");
-            navigate('/global-partner');
+            try {
+                // TODO: Implement API call to /api/global-partner/accept-terms
+                // const urlParams = new URLSearchParams(window.location.search);
+                // const token = urlParams.get('token');
+                // await fetch('/api/global-partner/accept-terms', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ token }),
+                // });
+                
+                navigate('/partner-terms/success');
+            } catch (error) {
+                console.error("Error accepting terms:", error);
+                alert("There was an error accepting the terms. Please try again.");
+            }
         }
     };
 

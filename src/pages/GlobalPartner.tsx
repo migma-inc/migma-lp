@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -67,9 +68,9 @@ export const GlobalPartner = () => {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground">
             {/* Wrapper com gradiente azul para Header + Hero */}
-            <div style={{ background: "radial-gradient(ellipse 200% 100% at bottom left, #183EC2, #EAEEFE 100%)" }}>
+            <div style={{ background: "radial-gradient(ellipse 200% 100% at bottom left, #183EC2, #EAEEFE 100%)" }} className="pt-[100px]">
                 {/* Header - Replicado do Template */}
-                <header className="sticky top-0 z-20">
+                <header className="fixed top-0 left-0 right-0 backdrop-blur-sm z-50">
                     <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
                         <p className="text-white/60 hidden md:block">Join our global team and work from anywhere</p>
                         <div className="inline-flex gap-1 items-center cursor-pointer" onClick={scrollToForm}>
@@ -80,23 +81,15 @@ export const GlobalPartner = () => {
                         </div>
                     </div>
 
-                    <div className="py-5">
+                    <div className="py-3">
                         <div className="container">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <div className="relative">
-                                        <div className="absolute inset-0 bg-gradient-to-r from-[#B8860B] to-[#DAA520] opacity-30 blur-2xl rounded-full"></div>
-                                        <span
-                                            className="relative text-2xl font-semibold tracking-tight bg-gradient-to-br from-[#DAA520] via-[#FFD700] to-[#B8860B] text-transparent bg-clip-text"
-                                            style={{
-                                                fontFamily: 'Inter, sans-serif',
-                                                textShadow: '0 1px 0 rgba(184, 134, 11, 0.4), 0 2px 0 rgba(184, 134, 11, 0.3), 0 3px 0 rgba(184, 134, 11, 0.2), 0 4px 0 rgba(184, 134, 11, 0.1), 0 5px 10px rgba(184, 134, 11, 0.15)',
-                                                WebkitTextStroke: '0.5px rgba(184, 134, 11, 0.3)'
-                                            }}
-                                        >
-                                            MIGMA INC
-                                        </span>
-                                    </div>
+                                    <img 
+                                        src="/logo2.png" 
+                                        alt="MIGMA INC" 
+                                        className="h-16 md:h-20 w-auto"
+                                    />
                                 </div>
                                 <svg className="h-5 w-5 md:hidden" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -115,7 +108,7 @@ export const GlobalPartner = () => {
                 </header>
 
                 {/* Section A: Hero - Replicado do Template */}
-                < section
+                <section
                     ref={heroRef}
                     className="pt-8 pb-20 md:pt-5 md:pb-10 overflow-x-clip"
                 >
@@ -140,8 +133,8 @@ export const GlobalPartner = () => {
                             </div>
                             <div className="mt-20 md:mt-0 md:h-[648px] md:flex-1 relative">
                                 <motion.img
-                                    src="/cog.png"
-                                    alt="Cog"
+                                    src="/foto1.png"
+                                    alt="Global Network"
                                     className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0"
                                     animate={{
                                         translateY: [-30, 30],
@@ -154,33 +147,39 @@ export const GlobalPartner = () => {
                                     }}
                                 />
                                 <motion.img
-                                    src="/cylinder.png"
+                                    src="/foto2.png"
                                     width={220}
                                     height={220}
-                                    alt="Cylinder image"
-                                    className="hidden md:block -top-8 -left-32 md:absolute"
+                                    alt="USD Symbol"
+                                    className="hidden md:block -top-8 -left-32 md:absolute rotate-[15deg]"
                                     style={{
                                         translateY: translateY,
-                                    }}
-                                />
-                                <motion.img
-                                    src="/noodle.png"
-                                    width={220}
-                                    alt="Noodle image"
-                                    className="hidden lg:block top-[420px] left-[448px] absolute rotate-[30deg]"
-                                    style={{
-                                        rotate: 30,
-                                        translateY: translateY,
+                                        rotate: 15,
                                     }}
                                 />
                             </div>
                         </div>
                     </div>
-                </section >
-            </div >
+                </section>
+            </div>
+
+            {/* Foto3 entre seções para efeito 3D */}
+            <div className="relative w-full overflow-x-clip -mt-32 mb-32">
+                <motion.img
+                    src="/foto3.png"
+                    width={220}
+                    alt="Global Network Connections"
+                    className="hidden lg:block absolute top-1/2 right-1/4 -translate-y-1/2 rotate-[30deg]"
+                    style={{
+                        rotate: 30,
+                        translateY: translateY,
+                        zIndex: 10,
+                    }}
+                />
+            </div>
 
             {/* Section B: Benefits Grid */}
-            < section id="benefits" className="gradient-section py-24 overflow-x-clip relative" >
+            <section id="benefits" className="gradient-section py-24 overflow-x-clip relative">
                 <div className="container">
                     {/* Heading centralizado inspirado no template */}
                     <div className="section-heading mb-16">
@@ -197,21 +196,22 @@ export const GlobalPartner = () => {
 
                     {/* Elementos 3D decorativos com parallax */}
                     <motion.img
-                        src="/pyramid.png"
-                        alt="Pyramid"
-                        width={200}
-                        height={200}
-                        className="hidden md:block absolute -right-16 top-0"
+                        src="/foto4.png"
+                        alt="Trophy Success"
+                        width={262}
+                        height={262}
+                        className="hidden md:block absolute right-4 top-16 rotate-[15deg]"
                         style={{
                             translateY: translateY,
+                            rotate: 15,
                         }}
                     />
                     <motion.img
-                        src="/tube.png"
-                        alt="Tube"
-                        width={200}
-                        height={200}
-                        className="hidden md:block absolute bottom-0 -left-16"
+                        src="/foto5.png"
+                        alt="Global Location"
+                        width={248}
+                        height={248}
+                        className="hidden md:block absolute bottom-8 left-0"
                         style={{
                             translateY: translateY,
                         }}
@@ -277,10 +277,94 @@ export const GlobalPartner = () => {
                         </motion.div>
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* Section C: Timeline */}
-            < section id="how-it-works" className="bg-white py-24" >
+            {/* Section C: Who is this for? */}
+            <section id="who-is-this-for" className="bg-white py-24">
+                <div className="container max-w-3xl">
+                    <div className="section-heading mb-16">
+                        <h2 className="section-title">Who is the MIGMA Global Partner Program for?</h2>
+                        <p className="section-description mt-5">
+                            We are looking for ambitious people and companies who want to work with MIGMA as independent contractors and help us expand globally.
+                        </p>
+                    </div>
+                    <div className="space-y-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You live in Brazil, Portugal, Angola, Mozambique, Cape Verde or any other country.</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You have (or are able to obtain) a valid business or tax registration (CNPJ, NIF or equivalent).</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You are comfortable working with clients, sales, service, operations or consulting.</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You are open to being paid per result, commission or project.</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.5 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You like the idea of growing with an international ecosystem instead of a traditional job.</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.6 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You like to receive payments in USD.</p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.7 }}
+                            className="flex items-start gap-3"
+                        >
+                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground">You enjoy working with the United States visa process.</p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section D: Timeline */}
+            <section id="how-it-works" className="bg-white py-24">
                 <div className="container max-w-3xl">
                     <div className="section-heading mb-16">
                         <h2 className="section-title">How it works</h2>
@@ -308,23 +392,237 @@ export const GlobalPartner = () => {
                         ))}
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* Section D: Application Form */}
-            < section id="application-form" className="gradient-section py-24" >
+            {/* Section E: Application Form */}
+            <section id="application-form" className="gradient-section py-24">
                 <div className="container max-w-3xl">
+                    <div className="text-center mb-8">
+                        <h2 className="section-title">Apply to become a MIGMA Global Partner</h2>
+                        <p className="section-description mt-5">
+                            Tell us more about you, your experience and why you want to work with MIGMA. If your profile matches what we are looking for, you will receive an email to schedule an interview.
+                        </p>
+                    </div>
                     <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-sm">
                         <CardContent className="p-8 sm:p-12">
                             <ApplicationWizard />
                         </CardContent>
                     </Card>
                 </div>
-            </section >
-        </div >
+            </section>
+
+            {/* Section F: Testimonials */}
+            <TestimonialsSection />
+
+            {/* Section G: Call to Action */}
+            <CallToActionSection scrollToForm={scrollToForm} />
+
+            {/* Footer */}
+            <FooterSection />
+        </div>
+    );
+};
+
+// Testimonials Section
+const TestimonialsSection = () => {
+    const testimonials = [
+        {
+            text: "Working with MIGMA as a Global Partner has been an incredible experience. The flexibility and support are unmatched.",
+            imageSrc: "/avatar-1.png",
+            name: "Sarah Chen",
+            username: "@sarahchen_dev",
+        },
+        {
+            text: "The opportunity to work remotely while earning in USD has transformed my career. Highly recommend joining the program.",
+            imageSrc: "/avatar-2.png",
+            name: "Marcus Rodriguez",
+            username: "@marcus_tech",
+        },
+        {
+            text: "MIGMA's Global Partner Program offers the perfect balance of independence and collaboration.",
+            imageSrc: "/avatar-3.png",
+            name: "Priya Patel",
+            username: "@priya_design",
+        },
+        {
+            text: "As a contractor, I appreciate the professional structure and competitive compensation MIGMA provides.",
+            imageSrc: "/avatar-4.png",
+            name: "David Kim",
+            username: "@davidkim_dev",
+        },
+        {
+            text: "The onboarding process was smooth, and the team is always available to help. Great experience overall.",
+            imageSrc: "/avatar-5.png",
+            name: "Emma Wilson",
+            username: "@emmawilson",
+        },
+        {
+            text: "Working with MIGMA has opened doors to exciting projects I wouldn't have access to otherwise.",
+            imageSrc: "/avatar-6.png",
+            name: "James Taylor",
+            username: "@jamestaylor",
+        },
+        {
+            text: "The freedom to work from anywhere combined with USD payments makes this program ideal for global professionals.",
+            imageSrc: "/avatar-7.png",
+            name: "Luna Martinez",
+            username: "@lunamartinez",
+        },
+        {
+            text: "MIGMA values quality work and provides the resources needed to deliver exceptional results.",
+            imageSrc: "/avatar-8.png",
+            name: "Alex Johnson",
+            username: "@alexjohnson",
+        },
+        {
+            text: "Being part of MIGMA's global network has expanded my professional horizons significantly.",
+            imageSrc: "/avatar-9.png",
+            name: "Sofia Anderson",
+            username: "@sofiaanderson",
+        },
+    ];
+
+    const firstColumn = testimonials.slice(0, 3);
+    const secondColumn = testimonials.slice(3, 6);
+    const thirdColumn = testimonials.slice(6, 9);
+
+    const TestimonialsColumn = ({ testimonials: columnTestimonials, duration = 15, className = "" }: { testimonials: typeof testimonials, duration?: number, className?: string }) => {
+        return (
+            <div className={className}>
+                <motion.div
+                    animate={{
+                        translateY: "-50%",
+                    }}
+                    transition={{
+                        duration: duration,
+                        repeat: Infinity,
+                        ease: "linear",
+                        repeatType: "loop",
+                    }}
+                    className="flex flex-col gap-6 pb-6"
+                >
+                    {[
+                        ...new Array(2).fill(0).map((_, index) => (
+                            <React.Fragment key={index}>
+                                {columnTestimonials.map(({ text, imageSrc, name, username }) => (
+                                    <div className="bg-white rounded-2xl p-6 shadow-[0_7px_14px_#EAEAEA] border border-[#F1F1F1]" key={username}>
+                                        <div className="text-gray-700">{text}</div>
+                                        <div className="flex items-center gap-2 mt-5">
+                                            <img
+                                                src={imageSrc}
+                                                alt={name}
+                                                className="h-10 w-10 rounded-full object-cover"
+                                            />
+                                            <div className="flex flex-col">
+                                                <div className="font-medium tracking-tight leading-5 text-gray-900">{name}</div>
+                                                <div className="leading-5 tracking-tight text-gray-500 text-sm">{username}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </React.Fragment>
+                        )),
+                    ]}
+                </motion.div>
+            </div>
+        );
+    };
+
+    return (
+        <section className="bg-white py-24">
+            <div className="container">
+                <div className="section-heading">
+                    <div className="flex justify-center">
+                        <div className="tag">Testimonials</div>
+                    </div>
+                    <h2 className="section-title mt-5">What our partners say</h2>
+                    <p className="section-description mt-5">
+                        Join a community of talented professionals who have found success working with MIGMA as Global Partners.
+                    </p>
+                </div>
+
+                <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+                    <TestimonialsColumn testimonials={firstColumn} duration={15} />
+                    <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+                    <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// Call to Action Section
+const CallToActionSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+    return (
+        <section ref={sectionRef} className="bg-gradient-to-b from-white to-[#D2DCFF] py-24 overflow-x-clip">
+            <div className="container">
+                <div className="section-heading relative">
+                    <h2 className="section-title">Ready to join our global team?</h2>
+                    <p className="section-description mt-5">
+                        Start your journey as a MIGMA Global Partner and work with freedom, earn in USD, and collaborate with a world-class team.
+                    </p>
+
+                    <motion.img
+                        src="/foto6.png"
+                        alt="Check Verification"
+                        width={360}
+                        className="hidden lg:block absolute -left-[350px] -top-[137px]"
+                        style={{
+                            translateY: translateY,
+                        }}
+                    />
+                    <motion.img
+                        src="/spring.png"
+                        alt="spring image"
+                        width={360}
+                        className="hidden lg:block absolute -right-[331px] -top-[19px]"
+                        style={{
+                            translateY: translateY,
+                        }}
+                    />
+                </div>
+
+                <div className="flex gap-2 mt-10 justify-center">
+                    <button onClick={scrollToForm} className="btn btn-primary">Apply now</button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// Footer Section
+const FooterSection = () => {
+    return (
+        <footer className="bg-black text-[#BCBCBC] text-sm py-10 text-center">
+            <div className="container">
+                <div className="inline-flex">
+                    <img src="/logo2.png" alt="MIGMA INC" className="h-16 md:h-20 w-auto" />
+                </div>
+                <nav className="flex flex-col md:flex-row md:justify-center gap-6 mt-6">
+                    <a href="#benefits">Benefits</a>
+                    <a href="#how-it-works">How it works</a>
+                    <a href="#application-form">Apply</a>
+                    <a href="#application-form">Pricing</a>
+                    <a href="#application-form">Help</a>
+                    <a href="#application-form">Careers</a>
+                </nav>
+
+                <p className="mt-6">&copy; 2025 MIGMA INC. All rights reserved.</p>
+            </div>
+        </footer>
     );
 };
 
 const ApplicationWizard = () => {
+    const navigate = useNavigate();
     const [step, setStep] = React.useState(1);
     const totalSteps = 5;
 
@@ -364,9 +662,22 @@ const ApplicationWizard = () => {
 
     const progress = (step / totalSteps) * 100;
 
-    const onSubmit = (data: FormData) => {
-        console.log("Form Submitted:", data);
-        alert("Application Submitted! (Check console for data)");
+    const onSubmit = async (data: FormData) => {
+        try {
+            // TODO: Implement API call to /api/global-partner/apply
+            // await fetch('/api/global-partner/apply', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data),
+            // });
+            
+            console.log("Form Submitted:", data);
+            // Redirect to thank you page
+            navigate('/global-partner/thank-you');
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("There was an error submitting your application. Please try again.");
+        }
     };
 
     return (
@@ -386,22 +697,22 @@ const ApplicationWizard = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="fullName">Full Name</Label>
-                                <Input id="fullName" placeholder="John Doe" {...register('fullName')} />
+                                <Input id="fullName" {...register('fullName')} />
                                 {errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" placeholder="john@example.com" {...register('email')} />
+                                <Input id="email" type="email" {...register('email')} />
                                 {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="phone">Phone</Label>
-                                <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" {...register('phone')} />
+                                <Input id="phone" type="tel" {...register('phone')} />
                                 {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="country">Country</Label>
-                                <Input id="country" placeholder="Select Country" {...register('country')} />
+                                <Input id="country" {...register('country')} />
                                 {errors.country && <p className="text-sm text-destructive">{errors.country.message}</p>}
                             </div>
                         </div>
@@ -424,7 +735,7 @@ const ApplicationWizard = () => {
 
                             <div className="space-y-2">
                                 <Label htmlFor="businessId">Business Registration Number (CNPJ/NIF)</Label>
-                                <Input id="businessId" placeholder="00.000.000/0001-00" {...register('businessId')} />
+                                <Input id="businessId" {...register('businessId')} />
                                 {errors.businessId && <p className="text-sm text-destructive">{errors.businessId.message}</p>}
                             </div>
                         </div>
@@ -436,7 +747,7 @@ const ApplicationWizard = () => {
                         <h3 className="text-2xl font-bold mb-4">Experience</h3>
                         <div className="space-y-2">
                             <Label htmlFor="yearsExperience">Years of Experience</Label>
-                            <Input id="yearsExperience" type="number" placeholder="e.g. 5" {...register('yearsExperience')} />
+                            <Input id="yearsExperience" type="number" {...register('yearsExperience')} />
                             {errors.yearsExperience && <p className="text-sm text-destructive">{errors.yearsExperience.message}</p>}
                         </div>
 
@@ -444,7 +755,7 @@ const ApplicationWizard = () => {
                             <Label>English Level</Label>
                             <Select onValueChange={(val) => setValue('englishLevel', val)}>
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select level" />
+                                    <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="Basic">Basic</SelectItem>
@@ -488,7 +799,7 @@ const ApplicationWizard = () => {
                             <Label>Availability</Label>
                             <Select onValueChange={(val) => setValue('availability', val)}>
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select availability" />
+                                    <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="Full-time">Full-time (40h/week)</SelectItem>
@@ -501,7 +812,7 @@ const ApplicationWizard = () => {
 
                         <div className="space-y-2">
                             <Label htmlFor="whyMigma">Why MIGMA?</Label>
-                            <Textarea id="whyMigma" placeholder="Tell us why you want to join..." className="min-h-[120px]" {...register('whyMigma')} />
+                            <Textarea id="whyMigma" className="min-h-[120px]" {...register('whyMigma')} />
                             {errors.whyMigma && <p className="text-sm text-destructive">{errors.whyMigma.message}</p>}
                         </div>
 
@@ -522,7 +833,7 @@ const ApplicationWizard = () => {
                         <h3 className="text-2xl font-bold mb-4">Finalize Application</h3>
                         <div className="space-y-2">
                             <Label htmlFor="linkedin">LinkedIn Profile URL</Label>
-                            <Input id="linkedin" placeholder="https://linkedin.com/in/..." {...register('linkedin')} />
+                            <Input id="linkedin" {...register('linkedin')} />
                             {errors.linkedin && <p className="text-sm text-destructive">{errors.linkedin.message}</p>}
                         </div>
 
